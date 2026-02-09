@@ -117,6 +117,22 @@ After the push the workflow will run (check the Actions tab). Once the job compl
 
 If you prefer a manual snapshot build directory, update the workflow's `path` in `.github/workflows/deploy.yml` to point to that folder (for example `build` or `public`).
 
+## Troubleshooting: permission errors during deploy
+
+If the workflow fails with a permission error when pushing to the `gh-pages` branch (for example `Permission to ... denied to github-actions[bot]`), try one of these fixes:
+
+1. Enable Actions write permissions for the repository
+   - Go to **Settings → Actions → General** in your repository.
+   - Under **Workflow permissions**, select **Read and write permissions** and save.
+   - Re-run the workflow (push a small change or re-run from the Actions tab).
+
+2. Use a Personal Access Token (PAT) as a repository secret
+   - Create a PAT with `repo` scope: https://github.com/settings/tokens
+   - Add the token to your repository secrets as `GH_PAGES_TOKEN` (Settings → Secrets and variables → Actions → New repository secret).
+   - The workflow is already configured to use `GH_PAGES_TOKEN` when present.
+
+Either option allows the deploy action to push the generated site to the `gh-pages` branch.
+
 ## 📧 Contact Form
 
 The contact form uses a mailto link to open the user's default email client. For a more robust solution, you can:

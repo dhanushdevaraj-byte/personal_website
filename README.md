@@ -136,6 +136,6 @@ The contact form uses a mailto link to open the user's default email client. For
 
 Feel free to use this template for your personal portfolio.
 
----
+--
 
 **Happy Building! 🚀**
